@@ -73,6 +73,7 @@ typedef JPRef<jarray> JPArrayRef;
 typedef JPRef<jthrowable> JPThrowableRef;
 
 class JPStackInfo;
+class JPGarbageCollection;
 
 void assertJVMRunning(JPContext* context, const JPStackInfo& info);
 
@@ -262,6 +263,8 @@ private:
 	bool m_IsShutdown;
 	bool m_IsInitialized;
 	bool m_ConvertStrings;
+public:
+	JPGarbageCollection *m_GC;
 } ;
 
 extern void JPRef_failed();
