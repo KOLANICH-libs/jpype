@@ -297,6 +297,11 @@ static PyObject* PyJPModule_isStarted(PyObject* obj)
 	return PyBool_FromLong(JPContext_global->isRunning());
 }
 
+PyObject *PyJPModule_getDefaultProperties(PyObject* module, PyObject* pyargs)
+{
+	Py_RETURN_NONE; // Not implemented yet. See https://github.com/jpype-project/jpype/issues/980
+}
+
 #ifndef ANDROID
 
 static PyObject* PyJPModule_attachThread(PyObject* obj)
@@ -673,6 +678,8 @@ static PyMethodDef moduleMethods[] = {
 	{"_newArrayType", (PyCFunction) PyJPModule_newArrayType, METH_VARARGS, ""},
 	{"_collect", (PyCFunction) PyJPModule_collect, METH_VARARGS, ""},
 	{"gcStats", (PyCFunction) PyJPModule_gcStats, METH_NOARGS, ""},
+
+	{"getDefaultProperties", (PyCFunction) PyJPModule_getDefaultProperties, METH_NOARGS, ""},
 
 	// Threading
 	{"isThreadAttachedToJVM", (PyCFunction) PyJPModule_isThreadAttached, METH_NOARGS, ""},
